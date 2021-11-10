@@ -1,11 +1,11 @@
 from pydantic import BaseModel
+from typing import Optional
 
 
 class Todo(BaseModel):
-    id: int
     title: str
     text: str
-    is_done: bool
+    is_done: Optional[bool] = False
 
     class Config:
         orm_mode = True

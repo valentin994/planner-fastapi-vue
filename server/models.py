@@ -1,5 +1,5 @@
-from .database import Base
-from sqlalchemy.orm import String, Column, Integer, Boolean
+from database import Base
+from sqlalchemy import String, Column, Integer, Boolean
 
 
 class Todo(Base):
