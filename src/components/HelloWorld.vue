@@ -1,8 +1,10 @@
+//TODO Popup for creating todos
 <template>
   <div class="hello">
     <h1>List Todos</h1>
-    <ul>
-      <li></li>
+    <ul v-for="todo in todos" v-bind:key="todo.title">
+      <li>{{ todo.title }}</li>
+      <li>{{ todo.text }}</li>
     </ul>
     <h1>{{ msg }}</h1>
     <p>
@@ -93,6 +95,25 @@
 <script>
 export default {
   name: "HelloWorld",
+  data() {
+    return {
+      todos: [],
+    };
+  },
+  methods: {
+    async getTodos() {
+      try {
+        let response = await fetch("http://127.0.0.1:8000/todos/");
+        this.todos = await response.json();
+        console.log(this.todos);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+  created() {
+    this.getTodos();
+  },
   props: {
     msg: String,
   },
