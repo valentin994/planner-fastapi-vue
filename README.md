@@ -1,3 +1,1 @@
 # Ghost Planner
-
-a
