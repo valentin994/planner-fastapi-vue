@@ -41,3 +41,5 @@ def get_todos(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 
 
 # TODO Route for deleting todos
+# TODO Add pyproject toml
+# TODO Tests & Coverage

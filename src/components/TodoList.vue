@@ -1,3 +1,4 @@
+//TODO Add remove todo button
 <template>
   <div>
     <ul v-for="todo in todos" :key="todo.text">

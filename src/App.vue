@@ -1,6 +1,8 @@
+//TODO Add add todo button //TODO Add add todo Component
 <template>
   <h1>Ghost Planner</h1>
   <TodoList :todos="todos" />
+  <button @click="addTodo">Add Todo</button>
 </template>
 
 <script>
@@ -19,7 +21,13 @@ export default {
       try {
         let response = await fetch("http://127.0.0.1:8000/todos/");
         this.todos = await response.json();
-        console.log(this.todos);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async addTodo() {
+      try {
+        console.log("I have added a todo");
       } catch (error) {
         console.log(error);
       }
