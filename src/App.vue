@@ -1,20 +1,33 @@
-//TODO Add add todo button //TODO Add add todo Component
+//TODO Add add todo Component
 <template>
   <h1>Ghost Planner</h1>
   <TodoList :todos="todos" />
-  <button @click="addTodo">Add Todo</button>
+  <button @click="showModal = true">Add Todo</button>
+  <modal v-if="showModal" @close="showModal = false">
+    //TODO Transfer this to a component
+    <template v-slot:header>
+      <h1>Task</h1>
+    </template>
+    <template v-slot:body>
+      <input v-model="title" placeholder="Title" />
+      <input v-model="text" placeholder="Text" />
+    </template>
+  </modal>
 </template>
 
 <script>
 import TodoList from "./components/TodoList.vue";
+import Modal from "./ui/Modal.vue";
 import axios from "axios";
 export default {
   name: "App",
-  components: { TodoList },
+  components: { TodoList, Modal },
   data() {
     return {
       todos: [],
       showModal: false,
+      title: "",
+      text: "",
     };
   },
   methods: {
@@ -28,8 +41,14 @@ export default {
       }
     },
     async addTodo() {
+      //TODO Pass this function to the modal button
       try {
-        console.log("I have added a todo");
+        await axios
+          .post("http://127.0.0.1:8000/todo/", {
+            title: this.title,
+            text: this.text,
+          })
+          .then((response) => console.log(response));
       } catch (error) {
         console.log(error);
       }
