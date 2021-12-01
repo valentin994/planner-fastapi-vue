@@ -7,20 +7,22 @@
 
 <script>
 import TodoList from "./components/TodoList.vue";
-
+import axios from "axios";
 export default {
   name: "App",
   components: { TodoList },
   data() {
     return {
       todos: [],
+      showModal: false,
     };
   },
   methods: {
     async getTodos() {
       try {
-        let response = await fetch("http://127.0.0.1:8000/todos/");
-        this.todos = await response.json();
+        await axios
+          .get("http://127.0.0.1:8000/todos/")
+          .then((response) => (this.todos = response.data));
       } catch (error) {
         console.log(error);
       }
