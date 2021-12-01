@@ -13,3 +13,9 @@ def create_todo(db: Session, todo: schemas.Todo):
     db.commit()
     db.refresh(db_todo)
     return db_todo
+
+
+def delete_todo(db: Session, id: int):
+    db.query(models.Todo).filter(models.Todo.id == id).delete()
+    db.commit()
+    return

@@ -40,6 +40,11 @@ def get_todos(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return todos
 
 
-# TODO Route for deleting todos
+@app.delete("/todo/{id}")
+def delete_todo(id: int, db: Session = Depends(get_db)):
+    crud.delete_todo(db, id)
+    return f"Deleted todo with id: {id}"
+
+
 # TODO Add pyproject toml
 # TODO Tests & Coverage
