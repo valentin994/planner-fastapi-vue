@@ -1,10 +1,9 @@
-//TODO Add add todo Component
 <template>
   <h1>Ghost Planner</h1>
   <TodoList :todos="todos" />
   <button @click="showModal = true">Add Todo</button>
+  <AddTodo />
   <modal v-if="showModal" @close="showModal = false">
-    //TODO Transfer this to a component
     <template v-slot:header>
       <h1>Task</h1>
     </template>
@@ -18,10 +17,11 @@
 <script>
 import TodoList from "./components/TodoList.vue";
 import Modal from "./ui/Modal.vue";
+import AddTodo from "./components/AddTodo.vue";
 import axios from "axios";
 export default {
   name: "App",
-  components: { TodoList, Modal },
+  components: { TodoList, Modal, AddTodo },
   data() {
     return {
       todos: [],
