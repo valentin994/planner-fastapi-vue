@@ -2,26 +2,16 @@
   <h1>Ghost Planner</h1>
   <TodoList :todos="todos" />
   <button @click="showModal = true">Add Todo</button>
-  <AddTodo />
-  <modal v-if="showModal" @close="showModal = false">
-    <template v-slot:header>
-      <h1>Task</h1>
-    </template>
-    <template v-slot:body>
-      <input v-model="title" placeholder="Title" />
-      <input v-model="text" placeholder="Text" />
-    </template>
-  </modal>
+  <AddTodo :showModal="showModal" @onClose="showModal = false" />
 </template>
 
 <script>
 import TodoList from "./components/TodoList.vue";
-import Modal from "./ui/Modal.vue";
 import AddTodo from "./components/AddTodo.vue";
 import axios from "axios";
 export default {
   name: "App",
-  components: { TodoList, Modal, AddTodo },
+  components: { TodoList, AddTodo },
   data() {
     return {
       todos: [],
@@ -36,19 +26,6 @@ export default {
         await axios
           .get("http://127.0.0.1:8000/todos/")
           .then((response) => (this.todos = response.data));
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async addTodo() {
-      //TODO Pass this function to the modal button
-      try {
-        await axios
-          .post("http://127.0.0.1:8000/todo/", {
-            title: this.title,
-            text: this.text,
-          })
-          .then((response) => console.log(response));
       } catch (error) {
         console.log(error);
       }

@@ -9,6 +9,7 @@
 </template>
 <script>
 export default {
+  //TODO props with static typing
   props: ["todos"],
   methods: {
     async deleteTodo() {

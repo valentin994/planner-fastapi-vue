@@ -1,5 +1,5 @@
 <template>
-  <modal v-if="showModal" @close="showModal = false">
+  <modal v-if="showModal" @close="$emit('onClose')">
     <template v-slot:header>
       <h1>Task</h1>
     </template>
@@ -12,7 +12,31 @@
 
 <script>
 import Modal from "../ui/Modal.vue";
+import axios from "axios";
 export default {
   components: { Modal },
+  props: { showModal: Boolean },
+  emits: ["onClose"],
+  data() {
+    return {
+      title: "",
+      text: "",
+    };
+  },
+  methods: {
+    //TODO pass addTodo to the modal submit button
+    async addTodo() {
+      try {
+        await axios
+          .post("http://127.0.0.1:8000/todo/", {
+            title: this.title,
+            text: this.text,
+          })
+          .then((response) => console.log(response));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
 };
 </script>
