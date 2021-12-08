@@ -1,5 +1,5 @@
 <template>
-  <modal v-if="showModal" @close="$emit('onClose')">
+  <modal v-if="showModal" @close="$emit('onClose')" @onSubmit="addTodo">
     <template v-slot:header>
       <h1>Task</h1>
     </template>
@@ -24,15 +24,12 @@ export default {
     };
   },
   methods: {
-    //TODO pass addTodo to the modal submit button
     async addTodo() {
       try {
-        await axios
-          .post("http://127.0.0.1:8000/todo/", {
-            title: this.title,
-            text: this.text,
-          })
-          .then((response) => console.log(response));
+        await axios.post("http://127.0.0.1:8000/todo/", {
+          title: this.title,
+          text: this.text,
+        });
       } catch (error) {
         console.log(error);
       }

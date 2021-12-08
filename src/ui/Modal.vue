@@ -12,7 +12,7 @@
 
         <div class="modal-footer">
           <slot name="footer">
-            <button class="modal-default-button" @click="$emit('close')">
+            <button class="modal-default-button" @click="onSubmit">
               Submit
             </button>
           </slot>
@@ -21,6 +21,16 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  methods: {
+    onSubmit() {
+      this.$emit("onSubmit");
+      this.$emit("close");
+    },
+  },
+};
+</script>
 <style scoped>
 .modal-mask {
   position: fixed;

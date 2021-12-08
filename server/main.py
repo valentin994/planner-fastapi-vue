@@ -34,7 +34,7 @@ def create_todo(todo: schemas.Todo, db: Session = Depends(get_db)):
     return crud.create_todo(db, todo)
 
 
-@app.get("/todos/", response_model=List[schemas.Todo])
+@app.get("/todos/")
 def get_todos(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     todos = crud.get_todos(db, skip, limit)
     return todos

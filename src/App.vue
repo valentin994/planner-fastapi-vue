@@ -9,6 +9,7 @@
 import TodoList from "./components/TodoList.vue";
 import AddTodo from "./components/AddTodo.vue";
 import axios from "axios";
+//TODO implement vue store for the todo list
 export default {
   name: "App",
   components: { TodoList, AddTodo },
