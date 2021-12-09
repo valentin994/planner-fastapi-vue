@@ -1,4 +1,5 @@
 import { createStore, createLogger } from "vuex";
+import api from "../api";
 
 export default createStore({
   state() {
@@ -7,6 +8,17 @@ export default createStore({
       todos: [],
     };
   },
-  actions: {},
+  mutations: {
+    setTodos(state, todos) {
+      console.log(todos);
+      state.todos = todos;
+    },
+  },
+  actions: {
+    async getAllTodos({ commit }) {
+      let todos = await api.getTodos();
+      commit("setTodos", todos);
+    },
+  },
   plugins: [createLogger()],
 });

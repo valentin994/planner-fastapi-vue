@@ -34,7 +34,7 @@ export default {
     },
   },
   created() {
-    console.log(this.$store.state);
+    this.$store.dispatch("getAllTodos");
     this.getTodos();
   },
 };
