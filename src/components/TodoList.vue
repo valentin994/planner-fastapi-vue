@@ -8,22 +8,14 @@
   </div>
 </template>
 <script>
-import axios from "axios";
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
+//TODO Add checkmark if something is done or not
 export default {
   computed: mapState({
     todos: (state) => state.todos,
   }),
   methods: {
-    async deleteTodo(id) {
-      try {
-        axios
-          .delete(`http://127.0.0.1:8000/todo/${id}`)
-          .then((response) => console.log(response));
-      } catch (error) {
-        console.log(error);
-      }
-    },
+    ...mapActions(["deleteTodo"]),
   },
   created() {
     this.$store.dispatch("getAllTodos");

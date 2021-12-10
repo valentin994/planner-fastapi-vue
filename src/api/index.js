@@ -13,4 +13,16 @@ export default {
       console.log(error);
     }
   },
+  async deleteTodo(id) {
+    // try {
+    //   axios
+    //     .delete(`http://127.0.0.1:8000/todo/${id}`)
+    //     .then((response) => console.log(response));
+    //   return id;
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    console.log("Hello");
+    return id;
+  },
 };
