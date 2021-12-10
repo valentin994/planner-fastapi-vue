@@ -1,6 +1,6 @@
 import { createStore, createLogger } from "vuex";
 import api from "../api";
-
+//import axios from "axios";
 export default createStore({
   state() {
     return {
@@ -9,14 +9,13 @@ export default createStore({
     };
   },
   mutations: {
-    setTodos(state, todos) {
-      console.log(todos);
-      state.todos = todos;
+    setTodos(state, allTodos) {
+      state.todos = allTodos;
     },
   },
   actions: {
     async getAllTodos({ commit }) {
-      let todos = await api.getTodos();
+      const todos = await api.getTodos();
       commit("setTodos", todos);
     },
   },

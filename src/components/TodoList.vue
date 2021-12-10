@@ -9,9 +9,11 @@
 </template>
 <script>
 import axios from "axios";
+import { mapState } from "vuex";
 export default {
-  //TODO props with static typing
-  props: ["todos"],
+  computed: mapState({
+    todos: (state) => state.todos,
+  }),
   methods: {
     async deleteTodo(id) {
       try {
@@ -22,6 +24,9 @@ export default {
         console.log(error);
       }
     },
+  },
+  created() {
+    this.$store.dispatch("getAllTodos");
   },
 };
 </script>
