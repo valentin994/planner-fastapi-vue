@@ -22,6 +22,7 @@ export default createStore({
       commit("setTodos", todos);
     },
     async deleteTodo({ commit }, id) {
+      await api.deleteTodo(id);
       commit("removeTodo", id);
     },
   },
