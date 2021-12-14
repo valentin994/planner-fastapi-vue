@@ -8,6 +8,3 @@ class Todo(Base):
     title = Column(String)
     text = Column(String)
     is_done = Column(Boolean, default=False)
-
-
-# TODO Return todo model

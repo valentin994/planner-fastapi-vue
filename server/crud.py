@@ -19,3 +19,7 @@ def delete_todo(db: Session, id: int):
     db.query(models.Todo).filter(models.Todo.id == id).delete()
     db.commit()
     return
+
+
+def update_todo(db: Session, id: int, data: dict):
+    pass

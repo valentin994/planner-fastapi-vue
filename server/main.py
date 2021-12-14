@@ -46,5 +46,6 @@ def delete_todo(id: int, db: Session = Depends(get_db)):
     return f"Deleted todo with id: {id}"
 
 
+# TODO Update todo, PATCH
 # TODO Add pyproject toml
 # TODO Tests & Coverage
