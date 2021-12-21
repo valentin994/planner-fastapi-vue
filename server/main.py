@@ -46,6 +46,11 @@ def delete_todo(id: int, db: Session = Depends(get_db)):
     return f"Deleted todo with id: {id}"
 
 
-# TODO Update todo, PATCH
+@app.patch("/todo/{id}")
+def patch_todo(id: int, data: dict, db: Session = Depends(get_db)):
+    crud.update_todo(db, id, data)
+    return {"id": id, **data}
+
+
 # TODO Add pyproject toml
 # TODO Tests & Coverage
