@@ -12,8 +12,6 @@
 
 `npm i`
 
-`cd server/`
-
 `python -m venv venv`
 
 MacOS/Unix `source venv/bin/activate`
@@ -24,6 +22,6 @@ Windows `venv\Scripts\Activate`
 
 ## Running the App
 
-In the server folder run `uvicorn main:app --reload`
+In the server folder run `uvicorn server.main:app --reload`
 
 In the root folder run `npm run serve`
