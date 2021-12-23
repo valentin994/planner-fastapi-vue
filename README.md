@@ -22,6 +22,6 @@ Windows `venv\Scripts\Activate`
 
 ## Running the App
 
-In the server folder run `uvicorn server.main:app --reload`
+`uvicorn server.main:app --reload`
 
-In the root folder run `npm run serve`
+`npm run serve`
