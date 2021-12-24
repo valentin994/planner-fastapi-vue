@@ -3,7 +3,9 @@ from .models import Todo as sqlTodo
 from .schemas import Todo
 
 
-def get_all_todos(db: Session, skip: int = 0, limit: int = 100) -> list[sqlTodo]:
+def get_all_todos(
+    db: Session, skip: int = 0, limit: int = 100
+) -> list[sqlTodo]:
     return db.query(sqlTodo).offset(skip).limit(limit).all()
 
 
